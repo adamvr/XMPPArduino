@@ -1,0 +1,23 @@
+#######################################
+# Syntax Coloring Map For Ultrasound
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+XMPPClient	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+connect 	KEYWORD2
+close 	KEYWORD2
+sendPresence 	KEYWORD2
+sendMessage 	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
