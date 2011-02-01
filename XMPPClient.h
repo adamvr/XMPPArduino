@@ -1,9 +1,8 @@
 #ifndef _H_XMPP_CLIENT
 #define _H_XMPP_CLIENT
 
+#include <Base64.h>
 #include <Ethernet.h>
-//#include "Client.h"
-#include "Base64.h"
 #include <string.h>
 #include <stdarg.h>
 #include <avr/pgmspace.h>

@@ -3,6 +3,11 @@ Introduction
 
 Arduino-XMPP is a simple write only XMPP client for the Arduino platform.
 
+Dependencies
+------------
+
+Arduino-XMPP depends on Arduino-Base64 (https://github.com/adamvr/arduino-base64). This should be included before XMPPClient.h or added to your main library directory.
+
 Operation
 ---------
 
@@ -23,3 +28,11 @@ This client library is somewhat restricted in what in can do. The major restrict
     3. No ability to receive and interpret incoming messages
 
 While the first one is on the two do list in some capacity, the first two are likely to never be rectified, due primarily to the SRAM restrictions of the Arduino
+
+TODO:
+-----
+
+* Add some semblance of being able to receive messages
+* Simplify the dependency on Base64, put base64 directly in the Arduino-XMPP directory, perhaps.
+* Add the ability to connect using a complete jid, rather than the parts of one
+* Add the ability to send presence messages that aren't just 'I'm here'
