@@ -1,18 +1,25 @@
 Introduction
 ------------
 
-Arduino-xmpp is a simple XMPP client library for
-the Arduino platform.
+Arduino-XMPP is a simple write only XMPP client for the Arduino platform.
 
-At this point, it isn't even a library so much as a
-messy bit of code that tends to buffer overrun itself
-if you lengthen strings, but this is set to change!
+Operation
+---------
 
-To use it at this point you will need to do the following:
-    1. Find out the IP address of the jabber server you want to connect to
-    2. Insert that into the 'serverIp' field
-    3. Fill in your JID details in the 'username', 'server' and 'resource' fields
-    4. Fill in your password in the 'password'
-    5. Compile and load
-    6. Hello Arduino!
+Basic operation is as follows:
+    1. Create an XMPPClient instance specifying your XMPP server IP address and port.
+    2. Call connect on the XMPPClient interface, specifying your username, the server's host name, the resource name you wish to bind to and the your password.
+    3. If connect returns 1, you're good to go on.
+    4. Register your presence as available by calling sendPresence.
+    5. Send messages using sendMessage.
+    6. Close the connection and XMPP stream using close.
 
+Limitations
+-----------
+
+This client library is somewhat restricted in what in can do. The major restrictions are as follows:
+    1. SASL-PLAIN authentication only
+    2. No SSL/TLS encryption on the stream
+    3. No ability to receive and interpret incoming messages
+
+While the first one is on the two do list in some capacity, the first two are likely to never be rectified, due primarily to the SRAM restrictions of the Arduino
