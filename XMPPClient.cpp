@@ -92,18 +92,19 @@ int XMPPClient::connect(char *username, char *server, char *resource, char *pass
 	    continue;
 	}
 
-	switch(stateAction()) {
-	    case 0:
-		break;
-	    case 1:
-		connected = true;
-		break;
-	    case -1:
-		error = true;
-		break;
-	    default:
-		error = true;
-		break;
+	int ret;
+	ret = stateAction();
+
+	if(ret == -1) {
+	    error = true;
+	}
+
+	if(ret == 1) {
+	    connected = true;
+	}
+
+	if(ret) {
+	    continue;
 	}
 
 	processInput();
@@ -180,6 +181,10 @@ int XMPPClient::sendTemplate(const prog_char *temp_P, int fillLen, ...) {
 }
 
 int XMPPClient::stateAction() {
+ /*
+ Serial.print("State = ");
+ Serial.println(state);
+ */
  switch(state) {
   case INIT:
     openStream(server);
@@ -241,12 +246,14 @@ void XMPPClient::processInput() {
       for(int i = 0; i < connTableSize; i++) {
         if(state == connTable[i].currentState && strstr(buffer,connTable[i].keyword)) {
           
+	  /*
           Serial.println(buffer);
           Serial.println(connTable[i].keyword);
           Serial.println((int)strstr(buffer, connTable[i].keyword)); 
           
           Serial.print(connTable[i].keyword);
           Serial.println(" seen, transitioning");
+	  */
           
           state = connTable[i].nextState;
           client.flush();
